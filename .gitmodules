@@ -1,0 +1,3 @@
+[submodule "FURY/vendor/spdlog"]
+	path = FURY/vendor/spdlog
+	url = https://github.com/gabime/spdlog

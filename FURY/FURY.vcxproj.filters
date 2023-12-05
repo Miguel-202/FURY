@@ -27,9 +27,15 @@
     <ClInclude Include="src\FURY\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\FURY\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FURY\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
