@@ -16,7 +16,7 @@ Welcome to the **FANTASTIC UNIFIED RENDERING YIELD (FURY) Game-Engine**, a high-
 - **Multi-Application Framework**: Supports the game and the engine applications within the same framework.
 - **Active Development**: Regularly updated with new features as the engine evolves.
 
-##Main features to come
+## Main features to come
 - Fast 2D rendering (UI, particles, sprites, etc.)
 - High-fidelity Physically-Based 3D rendering (this will be expanded later, 2D to come first)
 - Support for Mac, Linux, Android and iOS
