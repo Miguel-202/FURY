@@ -27,6 +27,7 @@ project "FURY"
 
     includedirs
     {
+        "%{prj.name}/src", --Easy includes for the project #include "FURY/Example.h" instead of #include "../FURY/src/Example.h"
         "%{prj.name}/vendor/spdlog/include"
     }
 

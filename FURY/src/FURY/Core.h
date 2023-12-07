@@ -9,3 +9,5 @@
 #else
 	#error FURY only supports Windows!
 #endif
+
+#define BIT_S(x) (1 << x)

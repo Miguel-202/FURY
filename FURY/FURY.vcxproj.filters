@@ -4,6 +4,9 @@
     <Filter Include="FURY">
       <UniqueIdentifier>{8BE6847C-771D-860D-200A-6C100C20020F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FURY\Events">
+      <UniqueIdentifier>{0F687AF8-7B1D-F3ED-0412-EDC470C6E9F1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\FURY.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\FURY\EntryPoint.h">
       <Filter>FURY</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Events\ApplicationEvent.h">
+      <Filter>FURY\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Events\Event.h">
+      <Filter>FURY\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Events\KeyEvent.h">
+      <Filter>FURY\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Events\MouseEvent.h">
+      <Filter>FURY\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\FURY\Log.h">
       <Filter>FURY</Filter>
