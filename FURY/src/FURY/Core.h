@@ -10,4 +10,12 @@
 	#error FURY only supports Windows!
 #endif
 
+#ifdef FURY_ENABLE_ASSERTS
+	#define FURY_ASSERT(x, ...) { if(!(x)) { FURY_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define FURY_CORE_ASSERT(x, ...) { if(!(x)) { FURY_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define FURY_ASSERT(x, ...)
+	#define FURY_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT_S(x) (1 << x)

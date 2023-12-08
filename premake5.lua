@@ -11,6 +11,18 @@ workspace "FURY"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "FURY/vendor/GLFW/include"
+--TODO: Add glad and imgui, and consider wind32 to support DirectX
+--IncludeDir["Glad"] = "FURY/vendor/Glad/include"
+--IncludeDir["ImGui"] = "FURY/vendor/imgui"
+--IncludeDir["glm"] = "FURY/vendor/glm"
+--IncludeDir["stb_image"] = "FURY/vendor/stb_image"
+
+include "FURY/vendor/GLFW"
+
+
 project "FURY"
     location "FURY"
     kind "SharedLib"
@@ -31,8 +43,16 @@ project "FURY"
     includedirs
     {
         "%{prj.name}/src", --Easy includes for the project #include "FURY/Example.h" instead of #include "../FURY/src/Example.h"
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
     }
+
+    links
+	{
+		"GLFW",
+		"opengl32.lib",
+	    "dwmapi.lib"
+	}
 
     filter "system:windows"
         cppdialect "C++17"

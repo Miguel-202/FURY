@@ -4,10 +4,12 @@
 #include "FURY/Events/ApplicationEvent.h"
 #include "FURY/Log.h"
 
+#include <GLFW/glfw3.h>
 namespace FURY
 {
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -16,15 +18,11 @@ namespace FURY
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategoryApplication))
-			FURY_TRACE(e);
-		if (e.IsInCategory(EventCategoryInput))
-			FURY_TRACE(e);
-
-		while (true)
+		while (m_Running)
 		{
-
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
 		}
 	}
 }
