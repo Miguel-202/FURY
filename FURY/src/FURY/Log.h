@@ -1,8 +1,11 @@
+#pragma warning(push)
+#pragma warning(disable:4251)
 #pragma once
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace FURY
 {
@@ -16,6 +19,7 @@ namespace FURY
 	private:
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
+#pragma warning(pop)
 	};
 }
 // Core log macros

@@ -19,6 +19,9 @@ project "FURY"
     targetdir ("bin/" ..outputdir.. "/%{prj.name}")
     objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
 
+    pchheader "FURYpch.h"
+    pchsource "FURY/src/FURYpch.cpp"
+
     files
     {
         "%{prj.name}/src/**.h",
@@ -27,6 +30,7 @@ project "FURY"
 
     includedirs
     {
+        "%{prj.name}/src", --Easy includes for the project #include "FURY/Example.h" instead of #include "../FURY/src/Example.h"
         "%{prj.name}/vendor/spdlog/include"
     }
 

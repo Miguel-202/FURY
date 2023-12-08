@@ -25,8 +25,8 @@ if %maxVer% == 0 (
 
 
 :: Construct the Visual Studio version string
-set vsVer=vs20%maxVer%
-
+::set vsVer=vs20%maxVer%
+set vsVer=vs2017
 
 :: Call Premake with the detected Visual Studio version
 call vendor\bin\premake\premake5.exe !vsVer!
