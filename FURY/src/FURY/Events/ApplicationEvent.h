@@ -1,8 +1,6 @@
 #pragma once
-
+#include "FURYpch.h"
 #include "Event.h"
-
-#include <sstream>
 
 namespace FURY
 {

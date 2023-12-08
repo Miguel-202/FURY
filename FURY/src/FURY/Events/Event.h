@@ -1,9 +1,6 @@
 #pragma once
-
+#include "FURYpch.h"
 #include "FURY/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace FURY 
 {

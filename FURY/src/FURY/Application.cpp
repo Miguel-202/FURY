@@ -1,3 +1,4 @@
+#include "FURYpch.h"
 #include "Application.h"
 
 #include "FURY/Events/ApplicationEvent.h"

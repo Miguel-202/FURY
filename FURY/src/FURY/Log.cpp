@@ -1,3 +1,4 @@
+#include "FURYpch.h"
 #include "Log.h"
 
 namespace FURY
