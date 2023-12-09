@@ -70,6 +70,4 @@ The FURY Game Engine is licensed under the Apache License 2.0. For more details,
 ## Contact
 
 For any inquiries or if you wish to know more about the FURY Game Engine, please visit my [website](https://miguelmartinezolivares.com/).
-```
 
-Please make sure to replace `LICENSE` in the `[LICENSE](LICENSE)` link with the actual path to your license file in your GitHub repository. This `README.md` provides a concise overview of your project, how to get started with it, and where to find further information.
