@@ -66,7 +66,7 @@ class FURY_API Event
 				/// (T*)&m_Event is like  "Trust me, this address points to an apple," 
 				/// *(T*)&m_Event is like "Here's your apple, sir."
 				/// &(T*)&m_Event is like "Here's the address of your apple, sir" without confirming that it is an apple.
-				m_Event.Handled = func(&(T*)*m_Event); 
+				m_Event.Handled = func(*(T*)&m_Event); 
 				return true;
 			}
 			return false;
