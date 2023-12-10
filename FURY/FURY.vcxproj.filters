@@ -37,6 +37,12 @@
     <ClInclude Include="src\FURY\Events\MouseEvent.h">
       <Filter>FURY\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\FURY\Layer.h">
+      <Filter>FURY</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\LayerStack.h">
+      <Filter>FURY</Filter>
+    </ClInclude>
     <ClInclude Include="src\FURY\Log.h">
       <Filter>FURY</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FURY\Application.cpp">
+      <Filter>FURY</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Layer.cpp">
+      <Filter>FURY</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\LayerStack.cpp">
       <Filter>FURY</Filter>
     </ClCompile>
     <ClCompile Include="src\FURY\Log.cpp">

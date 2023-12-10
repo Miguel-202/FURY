@@ -2,6 +2,7 @@
 //Only for FURY Applications
 
 #include "Fury/Application.h"
+#include "Fury/Layer.h"
 #include "Fury/Log.h"
 
 // ------ Entry Point ------

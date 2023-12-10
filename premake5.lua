@@ -56,7 +56,7 @@ project "FURY"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
+        staticruntime "Off"
         systemversion "latest"
 
         defines
@@ -117,7 +117,7 @@ project "Sandbox"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
+        staticruntime "Off"
         systemversion "latest"
 
         defines
@@ -127,12 +127,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "FURY_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "FURY_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "FURY_DIST"
+        buildoptions "/MD"
         optimize "On"

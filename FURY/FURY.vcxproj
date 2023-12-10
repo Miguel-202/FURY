@@ -83,7 +83,7 @@
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -108,7 +108,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -134,7 +134,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -157,6 +157,8 @@
     <ClInclude Include="src\FURY\Events\Event.h" />
     <ClInclude Include="src\FURY\Events\KeyEvent.h" />
     <ClInclude Include="src\FURY\Events\MouseEvent.h" />
+    <ClInclude Include="src\FURY\Layer.h" />
+    <ClInclude Include="src\FURY\LayerStack.h" />
     <ClInclude Include="src\FURY\Log.h" />
     <ClInclude Include="src\FURY\Window.h" />
     <ClInclude Include="src\FURYpch.h" />
@@ -164,6 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FURY\Application.cpp" />
+    <ClCompile Include="src\FURY\Layer.cpp" />
+    <ClCompile Include="src\FURY\LayerStack.cpp" />
     <ClCompile Include="src\FURY\Log.cpp" />
     <ClCompile Include="src\FURYpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
