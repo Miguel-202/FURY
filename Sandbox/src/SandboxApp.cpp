@@ -26,7 +26,7 @@ class Sandbox : public FURY::Application
 public:
 	Sandbox()
 	{
-		//PushLayer(new ExampleLayer());
+		PushLayer(new ExampleLayer());
 	}
 
 	~Sandbox()

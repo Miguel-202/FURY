@@ -5,6 +5,8 @@
 #include "FURY/Events/MouseEvent.h"
 #include "FURY/Events/KeyEvent.h"
 
+#include <Glad/glad.h>
+
 namespace FURY
 {
 	static bool s_GLFWInitialized = false;
@@ -47,6 +49,8 @@ namespace FURY
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		FURY_CORE_ASSERT(status, "Failed to initialize Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

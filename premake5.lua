@@ -14,14 +14,14 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "FURY/vendor/GLFW/include"
+IncludeDir["Glad"] = "FURY/vendor/Glad/include"
 --TODO: Add glad and imgui, and consider wind32 to support DirectX
---IncludeDir["Glad"] = "FURY/vendor/Glad/include"
 --IncludeDir["ImGui"] = "FURY/vendor/imgui"
 --IncludeDir["glm"] = "FURY/vendor/glm"
 --IncludeDir["stb_image"] = "FURY/vendor/stb_image"
 
 include "FURY/vendor/GLFW"
-
+include "FURY/vendor/Glad"
 
 project "FURY"
     location "FURY"
@@ -44,12 +44,14 @@ project "FURY"
     {
         "%{prj.name}/src", --Easy includes for the project #include "FURY/Example.h" instead of #include "../FURY/src/Example.h"
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
 	{
 		"GLFW",
+        "Glad",
 		"opengl32.lib",
 	    "dwmapi.lib"
 	}
@@ -62,7 +64,8 @@ project "FURY"
         defines
         {
             "FURY_PLATFORM_WINDOWS",
-            "FURY_BUILD_DLL"
+            "FURY_BUILD_DLL",   
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
