@@ -4,3 +4,6 @@
 [submodule "FURY/vendor/GLFW"]
 	path = FURY/vendor/GLFW
 	url = https://github.com/Miguel-202/glfw
+[submodule "FURY/vendor/imgui"]
+	path = FURY/vendor/imgui
+	url = https://github.com/TheCherno/imgui

@@ -15,6 +15,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "FURY/vendor/GLFW/include"
 IncludeDir["Glad"] = "FURY/vendor/Glad/include"
+IncludeDir["ImGui"] = "FURY/vendor/imgui/include"
 --TODO: Add glad and imgui, and consider wind32 to support DirectX
 --IncludeDir["ImGui"] = "FURY/vendor/imgui"
 --IncludeDir["glm"] = "FURY/vendor/glm"
@@ -45,13 +46,15 @@ project "FURY"
         "%{prj.name}/src", --Easy includes for the project #include "FURY/Example.h" instead of #include "../FURY/src/Example.h"
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}"
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links
 	{
 		"GLFW",
         "Glad",
+        "ImGui",
 		"opengl32.lib",
 	    "dwmapi.lib"
 	}
