@@ -15,7 +15,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "FURY/vendor/GLFW/include"
 IncludeDir["Glad"] = "FURY/vendor/Glad/include"
-IncludeDir["ImGui"] = "FURY/vendor/imgui/include"
+IncludeDir["ImGui"] = "FURY/vendor/imgui"
 --TODO: Add glad and imgui, and consider wind32 to support DirectX
 --IncludeDir["ImGui"] = "FURY/vendor/imgui"
 --IncludeDir["glm"] = "FURY/vendor/glm"
@@ -23,6 +23,7 @@ IncludeDir["ImGui"] = "FURY/vendor/imgui/include"
 
 include "FURY/vendor/GLFW"
 include "FURY/vendor/Glad"
+include "FURY/vendor/imgui"
 
 project "FURY"
     location "FURY"
