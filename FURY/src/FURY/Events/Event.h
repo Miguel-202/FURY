@@ -18,12 +18,12 @@ namespace FURY
 
 	enum EventCategory 
 	{
-		None = 0,
-		EventCategoryApplication = BIT_S(0),
-		EventCategoryInput = BIT_S(1),
-		EventCategoryKeyboard = BIT_S(2),
-		EventCategoryMouse = BIT_S(3),
-		EventCategoryMouseButton = BIT_S(4)
+		None						= 0,
+		EventCategoryApplication	= BIT_S(0),
+		EventCategoryInput			= BIT_S(1),
+		EventCategoryKeyboard		= BIT_S(2),
+		EventCategoryMouse			= BIT_S(3),
+		EventCategoryMouseButton	= BIT_S(4)
 	};
 
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\

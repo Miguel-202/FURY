@@ -19,3 +19,5 @@
 #endif
 
 #define BIT_S(x) (1 << x)
+
+#define FURY_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
