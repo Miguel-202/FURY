@@ -25,6 +25,8 @@ include "FURY/vendor/GLFW"
 include "FURY/vendor/Glad"
 include "FURY/vendor/imgui"
 
+startproject "Sandbox"
+
 project "FURY"
     location "FURY"
     kind "SharedLib"
