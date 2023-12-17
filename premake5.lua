@@ -8,6 +8,8 @@ workspace "FURY"
         "Dist"
     }
 
+    
+    startproject "Sandbox"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -21,11 +23,12 @@ IncludeDir["ImGui"] = "FURY/vendor/imgui"
 --IncludeDir["glm"] = "FURY/vendor/glm"
 --IncludeDir["stb_image"] = "FURY/vendor/stb_image"
 
-include "FURY/vendor/GLFW"
-include "FURY/vendor/Glad"
-include "FURY/vendor/imgui"
+group "Dependencies"
+    include "FURY/vendor/GLFW"
+    include "FURY/vendor/Glad"
+    include "FURY/vendor/imgui"
+group ""
 
-startproject "Sandbox"
 
 project "FURY"
     location "FURY"
@@ -80,8 +83,8 @@ project "FURY"
 
             --("{COPY}%{cfg.buildtarget.relpath} ../bin/" ..outputdir.. "/Sandbox")
 
-            ("copy /B /Y ..\\bin\\" .. outputdir .. "\\FURY\\FURY.dll ..\\bin\\" .. outputdir .. "\\Sandbox\\ > nul")
-
+            --("copy /B /Y ..\\bin\\" .. outputdir .. "\\FURY\\FURY.dll ..\\bin\\" .. outputdir .. "\\Sandbox\\ > nul")
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" ..outputdir.. "/Sandbox/\"")
             --"{mkdir} ../bin/" ..outputdir.. "/Sandbox",
             --"copy %{cfg.buildtarget.relpath} ../bin/" ..outputdir.. "/Sandbox"
         }
@@ -97,6 +100,7 @@ project "FURY"
     filter "configurations:Dist"
         defines "FURY_DIST"
         optimize "On"
+
 
 
 project "Sandbox"
@@ -136,15 +140,20 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "FURY_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
+        staticruntime "Off"
         symbols "On"
 
     filter "configurations:Release"
         defines "FURY_RELEASE"
-        buildoptions "/MD"
+        staticruntime "Off"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "FURY_DIST"
-        buildoptions "/MD"
+        staticruntime "Off"
+		runtime "Release"
         optimize "On"
+
+        
