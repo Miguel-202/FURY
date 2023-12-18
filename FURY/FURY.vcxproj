@@ -158,12 +158,14 @@
     <ClInclude Include="src\FURY\Events\KeyEvent.h" />
     <ClInclude Include="src\FURY\Events\MouseEvent.h" />
     <ClInclude Include="src\FURY\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\FURY\Input.h" />
     <ClInclude Include="src\FURY\Layer.h" />
     <ClInclude Include="src\FURY\LayerStack.h" />
     <ClInclude Include="src\FURY\Log.h" />
     <ClInclude Include="src\FURY\Window.h" />
     <ClInclude Include="src\FURYpch.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +178,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
