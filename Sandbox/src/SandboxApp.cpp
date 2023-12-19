@@ -11,12 +11,13 @@ public:
 
 	void OnUpdate() override
 	{
-		FURY_INFO("ExampleLayer::Update");
+		if (FURY::Input::IsKeyPressed(FURY_KEY_TAB))
+			FURY_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(FURY::Event& event) override
 	{
-		FURY_TRACE("{0}", event);
+		// FURY_TRACE("{0}", event);
 	}
 
 };

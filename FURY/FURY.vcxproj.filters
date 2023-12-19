@@ -46,6 +46,12 @@
     <ClInclude Include="src\FURY\ImGui\ImGuiLayer.h">
       <Filter>FURY\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\FURY\Input.h">
+      <Filter>FURY</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\KeyCodes.h">
+      <Filter>FURY</Filter>
+    </ClInclude>
     <ClInclude Include="src\FURY\Layer.h">
       <Filter>FURY</Filter>
     </ClInclude>
@@ -55,6 +61,9 @@
     <ClInclude Include="src\FURY\Log.h">
       <Filter>FURY</Filter>
     </ClInclude>
+    <ClInclude Include="src\FURY\MouseButtonCodes.h">
+      <Filter>FURY</Filter>
+    </ClInclude>
     <ClInclude Include="src\FURY\Window.h">
       <Filter>FURY</Filter>
     </ClInclude>
@@ -62,11 +71,12 @@
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\FURY\Input.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FURY\Application.cpp">
@@ -88,9 +98,11 @@
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

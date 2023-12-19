@@ -18,9 +18,8 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "FURY/vendor/GLFW/include"
 IncludeDir["Glad"] = "FURY/vendor/Glad/include"
 IncludeDir["ImGui"] = "FURY/vendor/imgui"
---TODO: Add glad and imgui, and consider wind32 to support DirectX
---IncludeDir["ImGui"] = "FURY/vendor/imgui"
---IncludeDir["glm"] = "FURY/vendor/glm"
+IncludeDir["glm"] = "FURY/vendor/glm"
+--TODO: consider wind32 to support DirectX
 --IncludeDir["stb_image"] = "FURY/vendor/stb_image"
 
 group "Dependencies"
@@ -53,7 +52,8 @@ project "FURY"
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -120,7 +120,8 @@ project "Sandbox"
     includedirs
     {
         "FURY/vendor/spdlog/include",
-        "FURY/src"
+        "FURY/src",
+        "%{IncludeDir.glm}"
     }
 
     links
