@@ -121,6 +121,7 @@ project "Sandbox"
     {
         "FURY/vendor/spdlog/include",
         "FURY/src",
+        "FURY/vendor",
         "%{IncludeDir.glm}"
     }
 

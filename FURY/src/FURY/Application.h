@@ -6,6 +6,8 @@
 #include "Events/Event.h"
 #include "FURY/Events/ApplicationEvent.h"
 
+#include "FURY/ImGui/ImGuiLayer.h"
+
 namespace FURY
 {
 
@@ -32,6 +34,7 @@ namespace FURY
 		static Application* s_Instance;
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	};
