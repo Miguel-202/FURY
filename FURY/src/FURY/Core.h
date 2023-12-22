@@ -1,11 +1,16 @@
 #pragma once
 
 #ifdef FURY_PLATFORM_WINDOWS
+#if FURY_DYNAMIC_LINK
 	#ifdef FURY_BUILD_DLL
 		#define FURY_API __declspec(dllexport)
 	#else
 		#define FURY_API __declspec(dllimport)
 	#endif
+
+#else
+	#define FURY_API
+#endif
 #else
 	#error FURY only supports Windows!
 #endif

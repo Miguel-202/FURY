@@ -31,8 +31,10 @@ group ""
 
 project "FURY"
     location "FURY"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
+    cppdialect "C++17"
+    staticruntime "on"
 
     targetdir ("bin/" ..outputdir.. "/%{prj.name}")
     objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
@@ -66,8 +68,6 @@ project "FURY"
 	}
 
     filter "system:windows"
-        cppdialect "C++17"
-        staticruntime "Off"
         systemversion "latest"
 
         defines
@@ -77,28 +77,20 @@ project "FURY"
             "GLFW_INCLUDE_NONE"
         }
 
-        postbuildcommands
-        {
-            --COPY "$(TargetDir)/FURY.dll" "$(SolutionDir)bin/Debug-windows-x86_64/Sandbox"
-
-            --("{COPY}%{cfg.buildtarget.relpath} ../bin/" ..outputdir.. "/Sandbox")
-
-            --("copy /B /Y ..\\bin\\" .. outputdir .. "\\FURY\\FURY.dll ..\\bin\\" .. outputdir .. "\\Sandbox\\ > nul")
-            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" ..outputdir.. "/Sandbox/\"")
-            --"{mkdir} ../bin/" ..outputdir.. "/Sandbox",
-            --"copy %{cfg.buildtarget.relpath} ../bin/" ..outputdir.. "/Sandbox"
-        }
 
     filter "configurations:Debug"
         defines "FURY_DEBUG"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "FURY_RELEASE"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "FURY_DIST"
+        runtime "Release"
         optimize "On"
 
 
@@ -107,6 +99,8 @@ project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    cppdialect "C++17"
+    staticruntime "On"
 
     targetdir ("bin/" ..outputdir.. "/%{prj.name}")
     objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
@@ -131,7 +125,6 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
         staticruntime "Off"
         systemversion "latest"
 
@@ -143,18 +136,15 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "FURY_DEBUG"
         runtime "Debug"
-        staticruntime "Off"
         symbols "On"
 
     filter "configurations:Release"
         defines "FURY_RELEASE"
-        staticruntime "Off"
         runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "FURY_DIST"
-        staticruntime "Off"
 		runtime "Release"
         optimize "On"
 
