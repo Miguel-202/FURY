@@ -1,5 +1,6 @@
 workspace "FURY"
     architecture "x64"
+    startproject "Sandbox"
 
     configurations
     {
@@ -9,7 +10,6 @@ workspace "FURY"
     }
 
     
-    startproject "Sandbox"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -45,8 +45,15 @@ project "FURY"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
+
+    defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
 
     includedirs
     {
@@ -75,6 +82,11 @@ project "FURY"
             "FURY_PLATFORM_WINDOWS",
             "FURY_BUILD_DLL",   
             "GLFW_INCLUDE_NONE"
+        }
+
+        postbuildcommands
+        {
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" ..outputdir.. "/Sandbox/\"")
         }
 
 
@@ -125,7 +137,6 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        staticruntime "Off"
         systemversion "latest"
 
         defines
@@ -147,5 +158,3 @@ project "Sandbox"
         defines "FURY_DIST"
 		runtime "Release"
         optimize "On"
-
-        
