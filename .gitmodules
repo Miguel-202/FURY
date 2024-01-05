@@ -6,7 +6,7 @@
 	url = https://github.com/Miguel-202/glfw
 [submodule "FURY/vendor/imgui"]
 	path = FURY/vendor/imgui
-	url = https://github.com/TheCherno/imgui
+	url = https://github.com/Miguel-202/imgui
 [submodule "FURY/vendor/glm"]
 	path = FURY/vendor/glm
 	url = https://github.com/g-truc/glm

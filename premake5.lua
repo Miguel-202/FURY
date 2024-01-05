@@ -1,3 +1,6 @@
+filter "action:vs*"
+    toolset "v143"
+
 workspace "FURY"
     architecture "x64"
     startproject "Sandbox"
