@@ -155,6 +155,7 @@
     <ClInclude Include="src\FURY\LayerStack.h" />
     <ClInclude Include="src\FURY\Log.h" />
     <ClInclude Include="src\FURY\MouseButtonCodes.h" />
+    <ClInclude Include="src\FURY\Renderer\Shader.h" />
     <ClInclude Include="src\FURY\Window.h" />
     <ClInclude Include="src\FURYpch.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -588,6 +589,7 @@
     <ClCompile Include="src\FURYpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

@@ -8,6 +8,8 @@
 
 #include "FURY/ImGui/ImGuiLayer.h"
 
+#include "FURY/Renderer/Shader.h"
+
 namespace FURY
 {
 
@@ -38,6 +40,8 @@ namespace FURY
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+
+		std::unique_ptr<Shader> m_Shader;
 
 		static Application* s_Instance;
 	};
