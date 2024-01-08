@@ -5,7 +5,7 @@
 #include "FURY/Events/MouseEvent.h"
 #include "FURY/Events/KeyEvent.h"
 
-#include <Glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace FURY
 {
@@ -37,6 +37,7 @@ namespace FURY
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
+
 		FURY_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height); 
 
 		if (!s_GLFWInitialized)
@@ -48,9 +49,10 @@ namespace FURY
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		FURY_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -155,7 +157,7 @@ namespace FURY
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
