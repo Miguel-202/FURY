@@ -9,8 +9,8 @@ namespace FURY
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:		FURY_ASSERT(false, "Renderer API::None is currently not supported!")	break;
-		case RendererAPI::OpenGL:	return new OpenGLVertexArray();											break;
+		case RendererAPI::API::None:		FURY_ASSERT(false, "Renderer API::None is currently not supported!")	break;
+		case RendererAPI::API::OpenGL:	return new OpenGLVertexArray();											break;
 		default:																							break;
 		}
 

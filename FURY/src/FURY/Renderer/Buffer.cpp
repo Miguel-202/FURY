@@ -12,8 +12,8 @@ namespace FURY
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:		FURY_ASSERT(false, "Renderer API::None is currently not supported!")	break;
-		case RendererAPI::OpenGL:	return new OpenGLVertexBuffer(vertices, size);							break;
+		case RendererAPI::API::None:		FURY_ASSERT(false, "Renderer API::None is currently not supported!")	break;
+		case RendererAPI::API::OpenGL:	return new OpenGLVertexBuffer(vertices, size);							break;
 		default:																							break;
 		}
 
@@ -24,10 +24,10 @@ namespace FURY
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			FURY_ASSERT(false, "Renderer API::None is currently not supported!")
 				break;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLIndexBuffer(indices, count);
 			break;
 		default:
