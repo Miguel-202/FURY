@@ -1358,6 +1358,8 @@
     <ClInclude Include="src\FURY\Renderer\RendererAPI.h" />
     <ClInclude Include="src\FURY\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\FURY\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\FURY\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FURY\Application.cpp">
@@ -1397,5 +1399,6 @@
     <ClCompile Include="src\FURY\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\FURY\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\FURY\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

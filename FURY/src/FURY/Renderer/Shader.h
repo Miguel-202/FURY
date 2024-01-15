@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <glm/glm.hpp>
 
 namespace FURY
 {
@@ -13,7 +14,7 @@ namespace FURY
 		virtual void Bind() const;
 		virtual void Unbind() const;
 
-		//static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
+		void UploadUniformMat4(const std::string name, const glm::mat4& matrix);
 
 	private:
 		uint32_t m_RendererID;
