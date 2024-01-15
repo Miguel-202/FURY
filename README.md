@@ -5,7 +5,16 @@ Welcome to the **FANTASTIC UNIFIED RENDERING YIELD (FURY) Game-Engine**, a high-
 
 *Started on*: **December 5, 2023**. 
 
-*Last update to the ReadMe*: **December 5, 2023**.
+*Last update to the ReadMe*: **Januray 15, 2024**.
+
+## Documentation
+In this section, you will find detailed documentation on various aspects of the FURY Game Engine. The documentation covers everything from the basic setup to advanced features, ensuring both beginners and experienced developers can make the most out of FURY.
+
+In this section, you will find detailed documentation on various aspects of the FURY Game Engine. The documentation covers everything from the basic setup to advanced features, ensuring both beginners and experienced developers can make the most out of FURY.
+
+- **Time Scale and Delta Time:** Timescale default value is retrived on seconds, but it can be retrived in miliseconds if specifing ts.GetMilliseconds().
+- **API Calls:** FURY will draw on the API that better fits the platform utilizing the Engine. If you want to learn more about the Rendering architecture, jump into FURY/src/FURY/Renderer..
+- **Additional Resources:** TODO: Links to more in-depth guides, tutorials, and examples to help you understand and use the FURY Game Engine to its full potential.
 
 ## Features
 

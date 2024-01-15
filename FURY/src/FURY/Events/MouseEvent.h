@@ -72,4 +72,27 @@ namespace FURY
 
 	private:
 		int m_Button;
+	};
+
+	class FURY_API MouseButtonReleasedEvent : public Event
+	{
+	public:
+		MouseButtonReleasedEvent(int button)
+			: m_Button(button) {}
+
+		inline int GetMouseButton() const { return m_Button; }
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseButtonReleasedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonReleased)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
+	private:
+		int m_Button;
+	};
 }

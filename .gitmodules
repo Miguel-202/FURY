@@ -1,3 +1,12 @@
 [submodule "FURY/vendor/spdlog"]
 	path = FURY/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "FURY/vendor/GLFW"]
+	path = FURY/vendor/GLFW
+	url = https://github.com/Miguel-202/glfw
+[submodule "FURY/vendor/imgui"]
+	path = FURY/vendor/imgui
+	url = https://github.com/Miguel-202/imgui
+[submodule "FURY/vendor/glm"]
+	path = FURY/vendor/glm
+	url = https://github.com/g-truc/glm

@@ -18,12 +18,12 @@ namespace FURY
 
 	enum EventCategory 
 	{
-		None = 0,
-		EventCategoryApplication = BIT_S(0),
-		EventCategoryInput = BIT_S(1),
-		EventCategoryKeyboard = BIT_S(2),
-		EventCategoryMouse = BIT_S(3),
-		EventCategoryMouseButton = BIT_S(4)
+		None						= 0,
+		EventCategoryApplication	= BIT_S(0),
+		EventCategoryInput			= BIT_S(1),
+		EventCategoryKeyboard		= BIT_S(2),
+		EventCategoryMouse			= BIT_S(3),
+		EventCategoryMouseButton	= BIT_S(4)
 	};
 
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
@@ -66,7 +66,7 @@ class FURY_API Event
 				/// (T*)&m_Event is like  "Trust me, this address points to an apple," 
 				/// *(T*)&m_Event is like "Here's your apple, sir."
 				/// &(T*)&m_Event is like "Here's the address of your apple, sir" without confirming that it is an apple.
-				m_Event.Handled = func(&(T*)*m_Event); 
+				m_Event.Handled = func(*(T*)&m_Event); 
 				return true;
 			}
 			return false;
