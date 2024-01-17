@@ -1,12 +1,13 @@
 #include <Fury.h>
 
 #include <imgui/imgui.h>
+#include <glm/ext/matrix_transform.hpp>
 
 class ExampleLayer : public FURY::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-2.0f, 2.0f, -2.0f, 2.0f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_Camera(-2.0f, 2.0f, -2.0f, 2.0f), m_CameraPosition(0.0f), m_SquarePosition(0.0f)
 	{
 		m_VertexArray.reset(FURY::VertexArray::Create());
 
@@ -62,6 +63,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 uViewProjection;
+			uniform mat4 uTransform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -70,7 +72,7 @@ public:
 			{
 				v_Position = a_Position;	
 				v_Color = a_Color;
-				gl_Position = uViewProjection * vec4(a_Position, 1.0);
+				gl_Position = uViewProjection * uTransform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -96,13 +98,14 @@ public:
 			layout(location = 0) in vec3 a_Position;
 
 			uniform mat4 uViewProjection;
+			uniform mat4 uTransform;
 
 			out vec3 v_Position;
 
 			void main()
 			{
 				v_Position = a_Position;	
-				gl_Position = uViewProjection * vec4(a_Position, 1.0);
+				gl_Position = uViewProjection * uTransform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -125,6 +128,7 @@ public:
 
 	void OnUpdate(FURY::Timestep ts) override
 	{
+		//Camera movement
 		if (FURY::Input::IsKeyPressed(FURY_KEY_LEFT))
 			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 		else if (FURY::Input::IsKeyPressed(FURY_KEY_RIGHT))
@@ -133,11 +137,20 @@ public:
 			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 		else if (FURY::Input::IsKeyPressed(FURY_KEY_DOWN))
 			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
+		//Camera rotation
 		if (FURY::Input::IsKeyPressed(FURY_KEY_A))
 			m_CameraRotation -= m_CameraSensibility * ts;
 		else if (FURY::Input::IsKeyPressed(FURY_KEY_D))
 			m_CameraRotation += m_CameraSensibility * ts;
+		//Square movement JKLI
+		if (FURY::Input::IsKeyPressed(FURY_KEY_J))
+			m_SquarePosition.x -= m_SquareMoveSpeed * ts;
+		else if (FURY::Input::IsKeyPressed(FURY_KEY_L))
+			m_SquarePosition.x += m_SquareMoveSpeed * ts;
+		if (FURY::Input::IsKeyPressed(FURY_KEY_I))
+			m_SquarePosition.y += m_SquareMoveSpeed * ts;
+		else if (FURY::Input::IsKeyPressed(FURY_KEY_K))
+			m_SquarePosition.y -= m_SquareMoveSpeed * ts;
 
 		FURY::RenderCommand::SetClearColor({ 0.1, 0.1, 0.1, 1 });
 		FURY::RenderCommand::Clear();
@@ -147,7 +160,9 @@ public:
 
 		FURY::Renderer::BeginScene(m_Camera);
 
-		FURY::Renderer::Submit(m_BlueShader, m_SquareVA);
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePosition);
+
+		FURY::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
 		FURY::Renderer::Submit(m_Shader, m_VertexArray);
 
 		FURY::Renderer::EndScene();
@@ -173,6 +188,9 @@ private:
 	float m_CameraRotation = 0.0f;
 	float m_CameraMoveSpeed = 0.3f;
 	float m_CameraSensibility = 180.0f;
+
+	glm::vec3 m_SquarePosition;
+	float m_SquareMoveSpeed = 0.3f;
 };
 
 class Sandbox : public FURY::Application
