@@ -1,6 +1,8 @@
 #include "FURYpch.h"
 #include "Renderer.h"
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 namespace FURY
 {
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
@@ -14,8 +16,8 @@ namespace FURY
 	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
-		shader->UploadUniformMat4("uViewProjection", m_SceneData->ViewProjectionMatrix);
-		shader->UploadUniformMat4("uTransform", transform);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("uViewProjection", m_SceneData->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("uTransform", transform);
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
