@@ -19,7 +19,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f
 		};
 
-		std::shared_ptr<FURY::VertexBuffer> vertexBuffer;
+		FURY::Ref<FURY::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(FURY::VertexBuffer::Create(vertices, sizeof(vertices)));
 		FURY::BufferLayout layout = {
 			{ FURY::ShaderDataType::Float3, "a_Position" },
@@ -31,7 +31,7 @@ public:
 
 
 		unsigned int indices[3] = { 0, 1, 2 };
-		std::shared_ptr<FURY::IndexBuffer> indexBuffer;
+		FURY::Ref<FURY::IndexBuffer> indexBuffer;
 		indexBuffer.reset(FURY::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -45,7 +45,7 @@ public:
 			-0.75f,  0.75f, 0.0f
 		};
 
-		std::shared_ptr<FURY::VertexBuffer> squareVB;
+		FURY::Ref<FURY::VertexBuffer> squareVB;
 		squareVB.reset(FURY::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ FURY::ShaderDataType::Float3, "a_Position" }
@@ -53,7 +53,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		unsigned int squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<FURY::IndexBuffer> squareIB;
+		FURY::Ref<FURY::IndexBuffer> squareIB;
 		squareIB.reset(FURY::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -198,11 +198,10 @@ public:
 	}
 
 private:
-	std::shared_ptr<FURY::Shader> m_Shader;
-	std::shared_ptr<FURY::VertexArray> m_VertexArray;
-
-	std::shared_ptr<FURY::Shader> m_FlatColorShader;
-	std::shared_ptr<FURY::VertexArray> m_SquareVA;
+	FURY::Ref<FURY::Shader> m_Shader;
+	FURY::Ref<FURY::VertexArray> m_VertexArray;
+	FURY::Ref<FURY::Shader> m_FlatColorShader;
+	FURY::Ref<FURY::VertexArray> m_SquareVA;
 
 	FURY::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

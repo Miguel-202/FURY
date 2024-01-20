@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef FURY_PLATFORM_WINDOWS
 #if FURY_DYNAMIC_LINK
 	#ifdef FURY_BUILD_DLL
@@ -26,3 +28,12 @@
 #define BIT_S(x) (1 << x)
 
 #define FURY_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace FURY
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}
