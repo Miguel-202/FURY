@@ -52,6 +52,9 @@ Clone the FURY repository and its submodules using the command:
 git clone --recursive https://github.com/Miguel-202/FURY.git
 ```
 
+NOTE: There is an issue when replcating the submodules of FURY Engine, the "glfw" module gets cloned from the original glfw library isntead of my forked version. For now it can be fixed by clonning manually the following version: https://github.com/Miguel-202/glfw/tree/FuryGLFW into FURY/vendor/GLFW
+
+
 If the repository was cloned non-recursively initially, retrieve the submodules with:
 
 ```bash
