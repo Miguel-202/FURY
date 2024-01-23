@@ -7,7 +7,7 @@ namespace FURY
 	class OrthographicCamera
 	{
 	public:
-		OrthographicCamera(float left, float right, float bottom, float top);
+		OrthographicCamera(float left, float right, float bottom, float top, float aspectRatio = 1);
 
 		void SetProjection(float left, float right, float bottom, float top);
 
@@ -31,5 +31,6 @@ namespace FURY
 
 		glm::vec3 m_Position = { 0.0f, 0.0f, 0.0f };
 		float m_Rotation = 0.0f;
+		float m_AspectRatio = 0.0f;
 	};
 }

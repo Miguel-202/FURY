@@ -7,14 +7,23 @@
     <Filter Include="src\FURY">
       <UniqueIdentifier>{02061ECF-EED2-78DA-17EC-66820318AE68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\FURY\Core">
+      <UniqueIdentifier>{9A3BF5F8-06FC-702F-CF36-BAAC3BB6B50B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\FURY\Events">
       <UniqueIdentifier>{A69B5410-1227-C2D4-1B38-45C987421ED5}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\FURY\ImGui">
       <UniqueIdentifier>{AC740718-9842-FB1D-81D6-6B446D43D782}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\FURY\Renderer">
+      <UniqueIdentifier>{E82BE56E-5442-E304-9DB9-6E26090FB48C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -40,6 +49,9 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\FURY.h">
@@ -50,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="src\FURY\Core.h">
       <Filter>src\FURY</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Core\Timestep.h">
+      <Filter>src\FURY\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\FURY\EntryPoint.h">
       <Filter>src\FURY</Filter>
@@ -87,11 +102,56 @@
     <ClInclude Include="src\FURY\MouseButtonCodes.h">
       <Filter>src\FURY</Filter>
     </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\Buffer.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\GraphicsContext.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\OrthographicCamera.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\RenderCommand.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\Renderer.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\RendererAPI.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\Shader.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\Texture.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FURY\Renderer\VertexArray.h">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\FURY\Window.h">
       <Filter>src\FURY</Filter>
     </ClInclude>
     <ClInclude Include="src\FURYpch.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
@@ -1347,20 +1407,9 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\FURY\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\FURY\Renderer\Shader.h" />
-    <ClInclude Include="src\FURY\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\FURY\Renderer\Renderer.h" />
-    <ClInclude Include="src\FURY\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\FURY\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\FURY\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\FURY\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\FURY\Core\Timestep.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FURY\Application.cpp">
@@ -1381,8 +1430,50 @@
     <ClCompile Include="src\FURY\Log.cpp">
       <Filter>src\FURY</Filter>
     </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\Buffer.cpp">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\OrthographicCamera.cpp">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\RenderCommand.cpp">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\Renderer.cpp">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\RendererAPI.cpp">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\Shader.cpp">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\Texture.cpp">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FURY\Renderer\VertexArray.cpp">
+      <Filter>src\FURY\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\FURYpch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
@@ -1390,17 +1481,8 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\FURY\Renderer\Shader.cpp" />
-    <ClCompile Include="src\FURY\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\FURY\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\FURY\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\FURY\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\FURY\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\FURY\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

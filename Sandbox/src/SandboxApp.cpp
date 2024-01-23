@@ -9,7 +9,7 @@ class ExampleLayer : public FURY::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-2.0f, 2.0f, -2.0f, 2.0f), m_CameraPosition(0.0f), m_SquarePosition(0.0f)
+		: Layer("Example"), m_Camera(-2.0f, 2.0f, -2.0f, 2.0f, 1.5), m_CameraPosition(0.0f), m_SquarePosition(0.0f)
 	{
 		m_VertexArray.reset(FURY::VertexArray::Create());
 
@@ -38,17 +38,18 @@ public:
 		m_SquareVA.reset(FURY::VertexArray::Create());
 
 
-		float squareVertices[3 * 4] = {
-			-0.75f, -0.75f, 0.0f,
-			 0.75f, -0.75f, 0.0f,
-			 0.75f,  0.75f, 0.0f,
-			-0.75f,  0.75f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.75f, -0.75f, 0.0f, 0.0f, 0.0f,
+			 0.75f, -0.75f, 0.0f, 1.0f, 0.0f,
+			 0.75f,  0.75f, 0.0f, 1.0f, 1.0f,
+			-0.75f,  0.75f, 0.0f, 0.0f, 1.0f
 		};
 
 		FURY::Ref<FURY::VertexBuffer> squareVB;
 		squareVB.reset(FURY::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ FURY::ShaderDataType::Float3, "a_Position" }
+			{ FURY::ShaderDataType::Float3, "a_Position" },
+			{ FURY::ShaderDataType::Float2, "a_TexCoord" }
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -57,7 +58,7 @@ public:
 		squareIB.reset(FURY::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-
+#pragma region ShaderGLSL
 		std::string vertexSrc = R"(
 			#version 330 core
 
@@ -77,8 +78,7 @@ public:
 				gl_Position = uViewProjection * uTransform * vec4(a_Position, 1.0);
 			}
 		)";
-
-		std::string fragmentSrc = R"(
+		std::string fragmentSrcSquare = R"(
 			#version 330 core
 
 			layout(location = 0) out vec4 color;
@@ -92,40 +92,46 @@ public:
 			}
 		)";
 
-		m_Shader.reset(FURY::Shader::Create(vertexSrc, fragmentSrc));
-
-		std::string vertexSrcSquare = R"(
+		std::string textureVertexSrcSquare = R"(
 			#version 330 core
 
 			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
 
 			uniform mat4 uViewProjection;
 			uniform mat4 uTransform;
 
-			out vec3 v_Position;
+			out vec2 v_TexCoord;
 
 			void main()
 			{
-				v_Position = a_Position;	
+				v_TexCoord = a_TexCoord;	
 				gl_Position = uViewProjection * uTransform * vec4(a_Position, 1.0);
 			}
 		)";
-
-		std::string fragmentSrcSquare = R"(
+		std::string textureFragmentSrc = R"(
 			#version 330 core
 
 			layout(location = 0) out vec4 color;
 
-			in vec3 v_Position;
-			uniform vec3 uColor;
+			in vec2 v_TexCoord;
+			uniform sampler2D u_Texture;
 
 			void main()
 			{
-				color = vec4(uColor,1);
+				color = texture(u_Texture, v_TexCoord);
 			}
 		)";
 
-		m_FlatColorShader.reset(FURY::Shader::Create(vertexSrcSquare, fragmentSrcSquare));
+#pragma endregion
+
+		m_TextureShader.reset(FURY::Shader::Create(textureVertexSrcSquare , textureFragmentSrc));
+		m_FlatColorShader.reset(FURY::Shader::Create(vertexSrc, fragmentSrcSquare));
+
+		m_Texture = FURY::Texture2D::Create("assets/textures/NightSky.png");
+
+		std::dynamic_pointer_cast<FURY::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<FURY::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(FURY::Timestep ts) override
@@ -169,7 +175,6 @@ public:
 
 		std::dynamic_pointer_cast<FURY::OpenGLShader>(m_FlatColorShader)->Bind();
 		std::dynamic_pointer_cast<FURY::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("uColor", m_SquareColor);
-		//std::dynamic_pointer_cast<FURY::OpenGLShader>(m_FlatColorShader)->UploadUniformMat4("uViewProjection", m_Camera.GetViewProjectionMatrix());
 
 		for (int y = 0; y < 20; y++)
 		{
@@ -181,7 +186,10 @@ public:
 				FURY::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
-		FURY::Renderer::Submit(m_Shader, m_VertexArray);
+
+		m_Texture->Bind();
+		FURY::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		//FURY::Renderer::Submit(m_Shader, m_VertexArray);
 
 		FURY::Renderer::EndScene();
 	}
@@ -198,10 +206,12 @@ public:
 	}
 
 private:
-	FURY::Ref<FURY::Shader> m_Shader;
+	FURY::Ref<FURY::Shader> m_TextureShader;
 	FURY::Ref<FURY::VertexArray> m_VertexArray;
 	FURY::Ref<FURY::Shader> m_FlatColorShader;
 	FURY::Ref<FURY::VertexArray> m_SquareVA;
+
+	FURY::Ref<FURY::Texture2D> m_Texture;
 
 	FURY::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

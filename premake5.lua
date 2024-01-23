@@ -23,7 +23,7 @@ IncludeDir["Glad"] = "FURY/vendor/Glad/include"
 IncludeDir["ImGui"] = "FURY/vendor/imgui"
 IncludeDir["glm"] = "FURY/vendor/glm"
 --TODO: consider wind32 to support DirectX
---IncludeDir["stb_image"] = "FURY/vendor/stb_image"
+IncludeDir["stb_image"] = "FURY/vendor/stb_image"
 
 group "Dependencies"
     include "FURY/vendor/GLFW"
@@ -49,6 +49,8 @@ project "FURY"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/stb_image/**.h",
+        "%{prj.name}/vendor/stb_image/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
     }
@@ -65,7 +67,9 @@ project "FURY"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.stb_image}"
+
     }
 
     links
@@ -94,6 +98,7 @@ project "FURY"
 
 
     filter "configurations:Debug"
+        buildoptions "/MTd"
         defines "FURY_DEBUG"
         runtime "Debug"
         symbols "On"

@@ -19,7 +19,7 @@
 
 #include "Fury/Renderer/Buffer.h"
 #include "Fury/Renderer/Shader.h"
-//#include "Fury/Renderer/Texture.h"
+#include "Fury/Renderer/Texture.h"
 #include "Fury/Renderer/VertexArray.h"
 
 #include "Fury/Renderer/OrthographicCamera.h"

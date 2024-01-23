@@ -22,6 +22,7 @@ project "Glad"
         systemversion "latest"
 
     filter "configurations:Debug"
+        buildoptions "/MTd"
         runtime "Debug"
         symbols "On"
 
